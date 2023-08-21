@@ -16,14 +16,14 @@ class dummyUsers extends Seeder
        $userData = [
             [
                 'name' => 'Account Viewers',
-                'email' => 'viewers@sundaya.com',
+                'email' => 'viewers@gmail.com',
                 'role' => 'viewers',
                 'password'=>bcrypt('12345')
             ],
 
             [
                 'name' => 'Account Admin',
-                'email' => 'admin@sundaya.com',
+                'email' => 'admin@gmail.com',
                 'role' => 'admin',
                 'password'=>bcrypt('12345')
             ],

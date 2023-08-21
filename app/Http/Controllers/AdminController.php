@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {   
      function indexHome(){
-       return view('home');
+      $data = array(
+        'title' => 'Home Page'
+      );
+       return view('home', $data);
     }
 
     function indexAdmin(){
@@ -16,7 +19,10 @@ class AdminController extends Controller
     //    echo "<h1>" . Auth::User()->name . "</h1>";
     //    echo "<a href='logout'>Logout</a>";
 
-    return view('home');
+    $data = array(
+        'title' => 'Home Page'
+      );
+       return view('home', $data);
 
     }
 
@@ -25,6 +31,9 @@ class AdminController extends Controller
     //    echo 'Hallo, Selemat Datang di Halaman Viewers';
     //    echo "<h1>" . Auth::User()->name . "</h1>";
     //    echo "<a href='logout'>Logout</a>";
-    return view('home');
+    $data = array(
+        'title' => 'Home Page'
+      );
+       return view('home', $data);
     }
 }
