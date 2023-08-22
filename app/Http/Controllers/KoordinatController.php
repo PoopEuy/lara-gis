@@ -19,6 +19,7 @@ class KoordinatController extends Controller
     {
         $data = array(
             'title' => 'Data Koordinat',
+            'geojsonIo' => 'http://geojson.io/#map=14.92/-6.59645/106.79497',
             'data_koordinat' => Koordinat::all(),
         );
 
@@ -43,24 +44,22 @@ class KoordinatController extends Controller
 
 
       ]);
-      return redirect('/koordinat')->with('success', 'data koordinat disimpan');
+      return redirect('/tabelKoordinat')->with('success', 'data koordinat disimpan');
    }
 
-   // function update(Request $request, $id){
-   //    Karyawan::where('id', $id)->update([
-   //    'kode_karyawan' => $request->kode_karyawan_edit,
-   //    'nama_karyawan' => $request->nama_karyawan_edit,
-   //    'kode_cabang' => $request->selectCabang_edit,
-   //    'kode_divisi' => $request->selectDivisi_edit,
-   //    'kode_departemen' => $request->selectDepart_edit,
-   //    ]);
+   function update(Request $request, $id){
+      Koordinat::where('id', $id)->update([
+      'nama_tempat' => $request->nama_tempat_edit,
+      'longitude' => $request->longitude_edit,
+      'latitude' => $request->latitude_edit,
+      ]);
 
-   //    return redirect('/karyawan')->with('success', 'data karyawan diubah');
-   // }
+      return redirect('/tabelKoordinat')->with('success', 'data koordinat diubah');
+   }
 
-   // function destroy($id){
-   //    Karyawan::where('id', $id)->delete();
+   function destroy($id){
+      Koordinat::where('id', $id)->delete();
 
-   //    return redirect('/karyawan')->with('success', 'data karyawan dihapus');
-   // }
+      return redirect('/tabelKoordinat')->with('success', 'data karyawan dihapus');
+   }
 }

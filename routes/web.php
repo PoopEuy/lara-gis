@@ -47,8 +47,10 @@ Route::middleware(['auth'])->group(function(){
    Route::get('/user/destroy/{id}', [UserController::class,'destroy'])->middleware('userAkses:admin');
 
    Route::get('/tabelKoordinat', [KoordinatController::class,'tabelKoordinat'])->middleware('userAkses:admin');
+   Route::post('/koordinat/update/{id}', [KoordinatController::class,'update'])->middleware('userAkses:admin');
    Route::get('/koordinatMap', [KoordinatController::class,'koordinatMap'])->middleware('userAkses:admin');
    Route::post('/koordinat/store', [KoordinatController::class,'store'])->middleware('userAkses:admin');
+   Route::get('/koordinat/destroy/{id}', [KoordinatController::class,'destroy'])->middleware('userAkses:admin');
 //    Route::post('/karyawan/update/{id}', [KoordinatController::class,'update'])->middleware('userAkses:admin');
 //    Route::get('/karyawan/destroy/{id}', [KoordinatController::class,'destroy'])->middleware('userAkses:admin');
 });

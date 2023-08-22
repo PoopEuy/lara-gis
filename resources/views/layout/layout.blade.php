@@ -122,7 +122,8 @@
                             <i class="icon-grid menu-icon"></i><span class="nav-text">Master Data</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/">Titik Koordinat</a></li>
+                            <li><a href="/tabelKoordinat">Titik Koordinat</a></li>
+                            <li><a target="_blank" href="http://geojson.io/#map=14.92/-6.59645/106.79497">Cari Koordinat</a></li>
                             {{-- <li><a href="./ui-alert.html">Ubah Karyawan</a></li> --}}
                         </ul>
                     </li>   

@@ -118,9 +118,19 @@ $(document).ready(function () {
         popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
       });
 
+      var html = "<h5>Nama Lokasi : " + namaTempat + "</h5>";
+
       L.marker([parseFloat(longitude), parseFloat(latitude)], {
         icon: com_centre,
-      }).addTo(map);
+      })
+        .addTo(map)
+        .bindPopup(html);
+      // .on("click", function (e) {
+      //   L.popup()
+      //     .setLatLng([parseFloat(longitude), parseFloat(latitude)])
+      //     .setContent(html)
+      //     .openOn(map);
+      // });
     });
   });
 });

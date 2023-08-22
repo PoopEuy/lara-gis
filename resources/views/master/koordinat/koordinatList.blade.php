@@ -18,7 +18,11 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">{{ $title }}</h4>
+
+                               {{-- <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" target="_blank" onclick="window.open(`{{ $geojsonIo }}`);">Cek Lokasi Koordinat</button> --}}
                                 <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate"> <i class="fa fa-plus"></i> Tambah Data</button>
+
+                               
                             </div>
                         </div>        
                         <div class="card-body">
@@ -107,60 +111,25 @@
         <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Update Data Karyawan</h5>
+                            <h5 class="modal-title">Update Data Koordinat</h5>
                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                             </button>
                         </div>
 
-                        <form method="POST" action="karyawan/update/{{ $edit_val->id }}">
+                        <form method="POST" action="koordinat/update/{{ $edit_val->id }}">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Kode Karyawan</label>
-                                <input type="text" class="form-control" name="nama_tempat_edit" placeholder="Kode Karyawan" value="{{ $edit_val->nama_tempat }}" required>
+                                <label>Nama Tempat</label>
+                                <input type="text" class="form-control" name="nama_tempat_edit" placeholder="Nama Tempat" value="{{ $edit_val->nama_tempat }}" required>
                             </div>
                             <div class="form-group">
                                 <label>Longitude</label>
-                                <input type="text" class="form-control" name="nama_karyawan_edit" placeholder="Kode Karyawan" value="{{ $edit_val->nama_karyawan }}" required>
+                                <input type="text" class="form-control" name="longitude_edit" placeholder="Longitude" value="{{ $edit_val->longitude }}" required>
                             </div>
-                            
                             <div class="form-group">
-                                <label>Cabang</label>
-                                <select class="form-control" name="selectCabang_edit" id="selectCabang_edit" required>
-                                    <option selected value="{{ $edit_val->kode_cabang }}">{{ $edit_val->kode_cabang }}</option>
-                                    <option value="BGR">Bogor</option>
-                                    <option value="JKT">Jakarta</option>
-                                    {{-- @foreach ($data_mtype as $index => $item)
-                                        <option value="{{ $item->type_batt }}" required="required">{{ $item->type_batt }}</option>
-                                        
-                                    @endforeach --}}
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Divisi</label>
-                                <select class="form-control" name="selectDivisi_edit" id="selectDivisi_edit" required>
-                                    <option selected>Choose...</option>
-                                    <option value="IT">IT</option>
-                                    <option value="GDNG">Gudang</option>
-                                    {{-- @foreach ($data_mtype as $index => $item)
-                                        <option value="{{ $item->type_batt }}" required="required">{{ $item->type_batt }}</option>
-
-                                        
-                                    @endforeach --}}
-                                </select>
-                            </div>
-
-                             <div class="form-group">
-                                <label>Departemen</label>
-                                <select class="form-control" name="selectDepart_edit" id="selectDepart_edit" required>
-                                    <option selected>Choose...</option>
-                                    <option value="FINANCE">Financial Services</option>
-                                    <option value="RND">Research & Development</option>
-                                    {{-- @foreach ($data_mtype as $index => $item)
-                                        <option value="{{ $item->type_batt }}" required="required">{{ $item->type_batt }}</option>
-                                    @endforeach --}}
-                                </select>
+                                <label>Latitude</label>
+                                <input type="text" class="form-control" name="latitude_edit" placeholder="Latitude" value="{{ $edit_val->latitude }}" required>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -178,12 +147,12 @@
         <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Hapus Data Karyawan</h5>
+                            <h5 class="modal-title">Hapus Data Koordinat</h5>
                             <button type="button" value="" class="close" data-dismiss="modal"><span>&times;</span>
                             </button>
                         </div>
 
-                        <form method="GET" action="karyawan/destroy/{{ $del_val->id }}">
+                        <form method="GET" action="koordinat/destroy/{{ $del_val->id }}">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
