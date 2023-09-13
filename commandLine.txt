@@ -1,0 +1,22 @@
+migrasi database :
+php artisan migrate
+
+cek status migrasi:
+php artisan migrate:status
+
+rollback migartion/undo migration:
+php artisan migrate:rollback
+
+Roll Back & Migrate:
+php artisan migrate:refresh
+
+
+membuat seeder (datadummy):
+php artisan make:seeder UserSeeder
+
+running seeder yg di buat:
+php artisan db:seed
+
+kalau gagal pake ini (sesuai seeder name):
+php artisan db:seed --class=KoordinatSeeder
+php artisan db:seed --class=dummyUsers

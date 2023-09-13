@@ -36,16 +36,54 @@ class KoordinatController extends Controller
 
     }
 
-    function store(Request $request){
-      Koordinat::create([
-      'nama_tempat' => $request->nama_tempat,
-      'latitude' => $request->latitude,
-      'longitude' => $request->longitude,
+//     function store(Request $request){
+//       Koordinat::create([
+//       'nama_tempat' => $request->nama_tempat,
+//       'latitude' => $request->latitude,
+//       'longitude' => $request->longitude,
 
 
-      ]);
-      return redirect('/tabelKoordinat')->with('success', 'data koordinat disimpan');
-   }
+//       ]);
+//       return redirect('/tabelKoordinat')->with('success', 'data koordinat disimpan');
+//    }
+
+public function store(Request $request)
+{
+    // Validate the form data, including the image
+    $request->validate([
+        'nama_tempat' => 'required|string|max:255',
+        'latitude' => 'required|numeric',
+        'longitude' => 'required|numeric',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
+    ]);
+
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+
+        // Generate a unique identifier (UUID)
+        $uniqueIdentifier = \Illuminate\Support\Str::uuid()->toString();
+
+        // Create a custom file name based on location data and the unique identifier
+        $imageName = \Illuminate\Support\Str::slug($request->nama_tempat) . '-' . $uniqueIdentifier . '.' . $image->getClientOriginalExtension();
+
+        // Store the image with the custom file name
+        $imagePath = $image->storeAs('koordinat_images', $imageName, 'public');
+
+        // Create a new Koordinat record with the uploaded image path
+        Koordinat::create([
+            'nama_tempat' => $request->nama_tempat,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'image' => $imagePath, // Store the image path in the database
+        ]);
+
+        return redirect('/tabelKoordinat')->with('success', 'Data koordinat disimpan');
+    }
+
+    // If the image upload fails, return an error message or response.
+    return redirect()->back()->with('error', 'Image upload failed');
+}
 
    function update(Request $request, $id){
       Koordinat::where('id', $id)->update([

@@ -17,6 +17,7 @@ class Koordinat extends Model
     protected $table = 'titik_koordinat';
     protected $fillable = [
         'nama_tempat',
+        'image',
         'latitude',
         'longitude',
     ];

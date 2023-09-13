@@ -13,17 +13,19 @@ class KoordinatSeeder extends Seeder
      */
     public function run(): void
     {
-        $dataKOordinat = [
+        $dataKoordinat = [
             [
                 'nama_tempat' => 'Titik A',
                 'latitude' => '106.79426649826837',
                 'longitude' => '-6.594599882859683',
+                'image' => 'koordinat_images/default.jpg',
                 
             ],
             [
                 'nama_tempat' => 'Titik B',
                 'latitude' => '106.79259299555616',
                 'longitude' => '-6.595232678443708',
+                'image' => 'koordinat_images/default.jpg',
                 
             ],
 
@@ -31,7 +33,7 @@ class KoordinatSeeder extends Seeder
             
         ];
 
-        foreach($dataKOordinat as $key => $val){
+        foreach($dataKoordinat as $key => $val){
             Koordinat::create($val);
         }
     }

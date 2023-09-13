@@ -36,6 +36,7 @@
                                             <th>Nama Tempat </th>
                                             <th>Latitude</th>
                                             <th>Longitude</th>
+                                            <th>Image</th>
                                             <th>Aksi</th>
                                                 
                                          </tr>
@@ -51,6 +52,7 @@
                                             <td>{{ $row->nama_tempat }}</td>
                                             <td>{{ $row->latitude }}</td>
                                             <td>{{ $row->longitude }}</td>
+                                            <td>{{ $row->image }}</td>
                                             <td>
                                                 {{-- <a href="#modalEdit{{ $row->id }}" data-toogle="modal" class="btn btn-xs btn-primary"><i class="fa fa-edit">Ubah</i></a>
                                                 <a href="#modalHapus{{ $row->id }}" data-toogle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash">Hapus</i></a> --}}
@@ -81,7 +83,7 @@
                             </button>
                         </div>
 
-                        <form method="POST" action="koordinat/store">
+                        <form method="POST" action="koordinat/store"  enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
@@ -96,6 +98,12 @@
                                 <label>Longitude</label>
                                 <input type="text" class="form-control" name="longitude" placeholder="Latitude" required>
                             </div>
+                            <div class="form-group">
+                                <label>Upload Image</label>
+                                <input type="file" name="image" id="image" accept="image/*" onchange="previewImage()">
+                                <img id="image-preview" src="#" alt="Image Preview"
+                                    style="display: none; max-width: 200px; max-height: 200px;">
+                            </div>
                               
                         </div>
                         <div class="modal-footer">
@@ -103,6 +111,24 @@
                             <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Simpan</button>
                         </div>
                         </form>
+
+                        <script>
+                        function previewImage() {
+                            var input = document.getElementById('image');
+                            var preview = document.getElementById('image-preview');
+                            
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    preview.src = e.target.result;
+                                    preview.style.display = 'block';
+                                };
+                                reader.readAsDataURL(input.files[0]);
+                            } else {
+                                preview.style.display = 'none';
+                            }
+                        }
+                        </script>
                 </div>
        </div>
 </div>
